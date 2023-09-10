@@ -1,0 +1,26 @@
+# Use an official Ubuntu base image
+FROM ubuntu:20.04
+
+# Update the package lists
+RUN apt-get update && apt-get -y upgrade
+
+# Install iproute2 and net-tools
+RUN apt-get install -y iproute2 net-tools
+
+# Define a volume mount point
+VOLUME /app/data
+
+# Install build essentials and g++ compiler
+RUN apt-get update && apt-get install -y build-essential g++
+
+# Copy your C++ source code into the container
+COPY receiver.cpp /app/ receiver.cpp
+
+# Set the working directory
+WORKDIR /app
+
+# Compile the C++ code
+RUN g++ -o receiver receiver.cpp
+
+# Set an entry point to run your application
+CMD ["./receiver"]
