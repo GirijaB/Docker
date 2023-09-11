@@ -21,7 +21,7 @@ EXPOSE 5055
 EXPOSE 5056
 
 # Compile the C++ code
-RUN g++ -o receiver receiver.cpp
+RUN g++ -o receiver receiver.cpp -pthread
 
 # Set an entry point to run your application
 CMD ["./myreceiver"]

@@ -7,6 +7,8 @@
 #include <netinet/in.h>
 #include <ctime>
 #include <string>
+#include <sstream>
+#include <thread>
 
 
 // Function to continuously receive data from the sender
@@ -33,7 +35,7 @@ void receiveData(int senderConnection) {
 
         // Write the received data to the output file
         outputFile.write(buffer, bytesRead);
-
+        std::cout << "Data has been received and stored in " << filename << "." << std::endl;
         // Flush and close the output file
         outputFile.flush();
         outputFile.close();
@@ -110,7 +112,6 @@ int main() {
     close(receiveSocket);
     outputFile.close(); 
 
-    std::cout << "Data has been received and stored in " << filename << "." << std::endl;
 
     return 0;
 }
