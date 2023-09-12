@@ -9,7 +9,9 @@
 #include <string>
 #include <sstream>
 #include <thread>
-
+    // Define the ports for receiving and storing data
+#define receivePort 5055;  // Port for receiving data
+#define storePort 5056;    // Port for storing data
 
 // Function to continuously receive data from the sender
 void receiveData(int senderConnection) {
@@ -51,10 +53,6 @@ void receiveData(int senderConnection) {
 }
 
 int main() {
-    // Define the ports for receiving and storing data
-    int receivePort = 5055;  // Port for receiving data
-    int storePort = 5056;    // Port for storing data
-
     // Create a socket for receiving data
     int receiveSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (receiveSocket == -1) {
