@@ -6,9 +6,10 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#define receiver_ip_address "172.17.0.3"
 
 int main() {
-    const char* receiver_ip = "172.17.0.3"; // Replace with the actual IP address of the receiver container
+    const char* receiver_ip = receiver_ip_address; // Replace with the actual IP address of the receiver container
     const int receiver_port = 5055; // Replace with the port the receiver is listening on
     const int packets_per_second = 100; // Desired packet rate
 

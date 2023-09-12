@@ -28,13 +28,16 @@ void receiveData(int senderConnection) {
         // Open a new file for each received packet
         std::ofstream outputFile(filename, std::ios::binary);
         if (!outputFile.is_open()) {
-            std::cerr << "Error opening the output file." << std::endl;
-            close(senderConnection);
+            std::cerr << "Error opening the output file." << std::endl; 
+            close(senderConnection);          
             return;
         }
-
+        std::cout << "Buffer contents: " << buffer << std::endl;
         // Write the received data to the output file
         outputFile.write(buffer, bytesRead);
+        if (outputFile.fail()) {
+                std::cerr << "Error writing to the output file." << std::endl;
+        }
         std::cout << "Data has been received and stored in " << filename << "." << std::endl;
         // Flush and close the output file
         outputFile.flush();
